@@ -1,0 +1,82 @@
+//employee
+package com.abc.lab1.bean;
+
+public class Employee {
+	private int employeeId;
+	private String employeeName;
+	private double salary;
+	private String businessUnit;
+	private int age;
+	public int getEmployeeId() {
+		return employeeId;
+	}
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
+	}
+	public String getEmployeeName() {
+		return employeeName;
+	}
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	public String getBusinessUnit() {
+		return businessUnit;
+	}
+	public void setBusinessUnit(String businessUnit) {
+		this.businessUnit = businessUnit;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+		
+}
+//Employeemain
+package com.abc.lab1.main;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.abc.lab1.bean.Employee;
+
+public class EmployeeMain {
+
+	public static void main(String[] args) {
+		ApplicationContext context = new ClassPathXmlApplicationContext("lab1.xml");
+        Employee employee =(Employee) context.getBean("emp");
+        
+        System.out.println("Employee ID: "+employee.getEmployeeId());
+        System.out.println("Employee name: "+employee.getEmployeeName());
+        System.out.println("Employee salary: "+employee.getSalary());
+        System.out.println("Employee BU: "+employee.getBusinessUnit());
+        System.out.println("Employee age: "+employee.getAge());
+        
+	}
+
+}
+xml file
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd"> 
+        
+        <bean id="emp" class="com.abc.lab1.bean.Employee" >
+        <property name="employeeId" value="111" />
+        <property name="employeeName" value="Raj" />
+        <property name="salary" value="60000" />
+        <property name="businessUnit" value="IT" />
+        <property name="age" value="24" />   
+        
+             
+        </bean>
+</beans>
